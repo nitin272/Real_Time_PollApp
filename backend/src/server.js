@@ -30,15 +30,10 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(express.static(join(__dirname, '../../Client/dist')));
 
 app.use('/api', pollRouter);
 
 setupSocketHandlers(io);
-
-app.get('*', (_req, res) => {
-  res.sendFile(join(__dirname, '../../Client/dist/index.html'));
-});
 
 async function startServer() {
   try {
@@ -51,7 +46,7 @@ async function startServer() {
 ║   Port: ${config.port}                        ║
 ║   Environment: ${config.nodeEnv.padEnd(19)} ║
 ║   Database: Connected                  ║
-║   CORS: ${config.corsOrigin.padEnd(27)} ║
+║   CORS: ${Array.isArray(config.corsOrigin) ? config.corsOrigin.join(', ') : config.corsOrigin}
 ╚════════════════════════════════════════╝
       `);
     });
@@ -62,3 +57,4 @@ async function startServer() {
 }
 
 startServer();
+
