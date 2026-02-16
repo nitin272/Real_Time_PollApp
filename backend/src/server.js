@@ -35,6 +35,10 @@ app.use('/api', pollRouter);
 
 setupSocketHandlers(io);
 
+app.get('/health', (_req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 async function startServer() {
   try {
     await connectDatabase(config.mongodbUri);
@@ -46,7 +50,6 @@ async function startServer() {
 ║   Port: ${config.port}                        ║
 ║   Environment: ${config.nodeEnv.padEnd(19)} ║
 ║   Database: Connected                  ║
-║   CORS: ${Array.isArray(config.corsOrigin) ? config.corsOrigin.join(', ') : config.corsOrigin}
 ╚════════════════════════════════════════╝
       `);
     });
@@ -57,4 +60,3 @@ async function startServer() {
 }
 
 startServer();
-

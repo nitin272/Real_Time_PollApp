@@ -2,9 +2,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? [process.env.CORS_ORIGIN]
-  : ['http://localhost:4500', 'http://real-time-poll-app-lake.vercel.app'];
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map(origin => origin.trim())
+  : ['http://localhost:4500', 'https://real-time-poll-app-mu.vercel.app'];
 
 export const config = {
   port: process.env.PORT || 3001,
