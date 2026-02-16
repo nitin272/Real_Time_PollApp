@@ -1,0 +1,147 @@
+.poll-view {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 100%;
+}
+
+.poll-view h1 {
+  margin: 0 0 2rem 0;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.voting-section .options {
+  margin-bottom: 1.5rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.option:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.option input[type="radio"] {
+  margin-right: 1rem;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.option span {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.voted-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.results {
+  margin-bottom: 1.5rem;
+}
+
+.result-item {
+  margin-bottom: 1.5rem;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.option-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.percentage {
+  font-weight: 700;
+  color: #667eea;
+}
+
+.progress-bar {
+  height: 30px;
+  background: #f0f0f0;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.5s ease;
+}
+
+.vote-count {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.total-votes {
+  text-align: center;
+  font-weight: 600;
+  color: #555;
+  margin-top: 1rem;
+}
+
+.share-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #f0f0f0;
+}
+
+.share-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.share-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.share-input input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.btn-copy {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-copy:hover {
+  background: #5568d3;
+}
