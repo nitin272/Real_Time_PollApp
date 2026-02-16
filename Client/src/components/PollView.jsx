@@ -6,7 +6,7 @@ import { voterService } from '../services/voter';
 import './PollView.css';
 
 export const PollView = ({ pollId }) => {
-  const { poll, loading } = usePoll(pollId);
+  const { poll, loading, error: pollError } = usePoll(pollId);
   const { vote, voting, voteError, hasVoted } = useVote();
   const [selectedOption, setSelectedOption] = useState(null);
   const [alreadyVoted, setAlreadyVoted] = useState(false);
@@ -38,8 +38,8 @@ export const PollView = ({ pollId }) => {
     return <div className="loading">Loading poll...</div>;
   }
 
-  if (!poll) {
-    return <div className="error">Poll not found</div>;
+  if (pollError || !poll) {
+    return <div className="error">{pollError || 'Poll not found'}</div>;
   }
 
   const showResults = hasVoted || alreadyVoted;

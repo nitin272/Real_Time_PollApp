@@ -11,10 +11,14 @@ export const voterService = {
 
   async getClientIp() {
     try {
-      const response = await fetch('https://api.ipify.org?format=json');
+      const response = await fetch('https://api.ipify.org?format=json', {
+        timeout: 3000
+      });
+      if (!response.ok) throw new Error('IP fetch failed');
       const data = await response.json();
-      return data.ip;
-    } catch {
+      return data.ip || 'unknown';
+    } catch (error) {
+      console.warn('Failed to fetch IP:', error);
       return 'unknown';
     }
   },

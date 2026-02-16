@@ -12,15 +12,18 @@ const pollSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+    maxlength: 200,
   },
   options: [{
     type: String,
     required: true,
     trim: true,
+    maxlength: 100,
   }],
   createdAt: {
     type: Date,
     default: Date.now,
+    index: true,
   },
 }, {
   timestamps: true,

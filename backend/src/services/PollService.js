@@ -5,13 +5,17 @@ import { validatePollCreation } from '../utils/validation.js';
 
 export class PollService {
   async createPoll(question, options) {
-    const validation = validatePollCreation(question, options);
+    // Sanitize inputs
+    const sanitizedQuestion = question?.trim();
+    const sanitizedOptions = options?.map(opt => opt?.trim()).filter(Boolean);
+
+    const validation = validatePollCreation(sanitizedQuestion, sanitizedOptions);
     if (!validation.isValid) {
       throw new Error(validation.errors.join(', '));
     }
 
     const pollId = nanoid(10);
-    const poll = await pollRepository.create(pollId, question, options);
+    const poll = await pollRepository.create(pollId, sanitizedQuestion, sanitizedOptions);
 
     return {
       id: poll.pollId,

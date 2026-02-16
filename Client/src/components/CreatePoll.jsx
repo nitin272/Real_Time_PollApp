@@ -9,6 +9,9 @@ export const CreatePoll = ({ onPollCreated }) => {
   const { createPoll, loading, error } = useCreatePoll();
 
   const handleAddOption = () => {
+    if (options.length >= 10) {
+      return; // Max 10 options
+    }
     setOptions([...options, '']);
   };
 
@@ -45,6 +48,7 @@ export const CreatePoll = ({ onPollCreated }) => {
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder="What's your question?"
+            maxLength={200}
             required
           />
         </div>
@@ -58,6 +62,7 @@ export const CreatePoll = ({ onPollCreated }) => {
                 value={option}
                 onChange={(e) => handleOptionChange(index, e.target.value)}
                 placeholder={`Option ${index + 1}`}
+                maxLength={100}
                 required
               />
               {options.length > 2 && (
@@ -71,8 +76,13 @@ export const CreatePoll = ({ onPollCreated }) => {
               )}
             </div>
           ))}
-          <button type="button" onClick={handleAddOption} className="btn-add">
-            + Add Option
+          <button 
+            type="button" 
+            onClick={handleAddOption} 
+            className="btn-add"
+            disabled={options.length >= 10}
+          >
+            + Add Option {options.length >= 10 && '(Max 10)'}
           </button>
         </div>
 
